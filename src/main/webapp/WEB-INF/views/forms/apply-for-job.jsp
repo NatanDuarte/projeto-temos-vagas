@@ -22,7 +22,7 @@
 
                             <div class="input-field col s12 m6">
                               <i class="material-icons prefix">phone</i>
-                              <input name="phone" type="tel" class="validate">
+                              <input name="phone" type="tel" class="validate" id="phone">
                               <label for="phone">celular/telefone</label>
                             </div>
 
@@ -58,5 +58,11 @@
         </main>
 
         <c:import url="../components/footer.jsp" charEncoding="UTF-8"/>
+        <script>
+            document.getElementById('phone').addEventListener('input', function (e) {
+                var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                e.target.value = '(' + (!x[2] ? x[1] : x[1]) + ') ' + x[2] + '-' + x[3] + '';
+            });
+        </script>
     </body>
 </html>
